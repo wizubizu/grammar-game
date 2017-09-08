@@ -116,6 +116,7 @@ select:focus {
 .m-t-7p{margin-top:7% !important; }
 .m-t-10p{margin-top:10% !important; }
 .m-t-12p{margin-top:12% !important; }
+.m-t-15p{margin-top:15% !important; }
 .m-t-20p{margin-top:20% !important; }
 .m-t-21p{margin-top:21% !important; }
 .m-t-30p{margin-top:30% !important; }
@@ -358,6 +359,7 @@ select:focus {
 .f-95{font-size:95px !important;}
 .f-100{font-size:100px !important;}
 .f-150{font-size:150px !important;}
+.f-11em{font-size:11em !important;}
 
 /****  Font Weight  ****/
 .w-300 {font-weight:300 !important;}
@@ -404,6 +406,7 @@ select:focus {
 .width-300 {width:300px !important;}
 .width-310 {width:310px !important;}
 .width-350 {width:350px !important;}
+.width-360 {width:360px !important;}
 .width-395 {width:395px !important;}
 .width-494 {width:494px !important;}
 .width-500 {width:500px !important;}
@@ -492,6 +495,7 @@ select:focus {
 .c-brand-3{ color:#2095f2 !important; }
 .c-white{ color:#FFFFFF !important; }
 .c-dark{ color:#333333 !important; }
+.c-green{ color:#008000 !important; }
 
 .btn-white{ border-radius:50px; background:#FFFFFF; color:#2095f2 !important; font-weight:700; line-height:1.5; padding:11px 26px; }
 .btn-red{ border-radius:50px; background:#F90707; color:#FFFFFF !important; font-weight:700; line-height:1.5; padding:11px 26px; }
