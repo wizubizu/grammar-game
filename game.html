@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="description" content="">
@@ -8,7 +9,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>English Mall</title>
-	
+
 
 	<!-- STYLESHEETS-->
 	<link rel="stylesheet" type="text/css" href="libraries/bootstrap/css/bootstrap.min.css">
@@ -17,7 +18,7 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/index.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/checkbox.css">
-	
+
 
 
 	<!-- WEBFONT -->
@@ -26,8 +27,9 @@
 	<!-- ICON -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body class="bg-landing">
-	
+
 
 	<header>
 		<nav class="navbar navbar-default bs bg-white" role="navigation">
@@ -42,7 +44,7 @@
 					</button>
 					<a class="navbar-brand" href="index.html">Englis Mall</a>
 				</div>
-		
+
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse navbar-ex1-collapse">
 					<!-- <ul class="nav navbar-nav">
@@ -67,36 +69,57 @@
 							</ul>
 						</li> -->
 					</ul>
-				</div><!-- /.navbar-collapse -->
+				</div>
+				<!-- /.navbar-collapse -->
 			</div>
 		</nav>
 	</header>
-	
+
 	<section>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-2"></div>
-				<div class="col-md-8 bd-4 bs bg-white p-t-5p m-t-3p m-b-5p">
-					<p class="f1 text-center f-30 ">VERBS</p>
+				<div class="col-md-8 bd-4 bs bg-white p-t-5p m-t-3p m-b-5p" id="questionArea">
+					<p class="f1 text-center f-30 question-category">VERBS</p>
 					<div class="row">
 						<div class="col-md-2 col-sm-2">
 							<p class="f1 m-b-0 f-20">Timing</p>
-							<p class="f1">100</p>
-							<button type="button" class="btn bg-white f1 bs f-20">Purse</button>
+							<div id="clockdiv">
+								<!--  <div>
+							    <span class="days"></span>
+							    <div class="smalltext">Days</div>
+							  </div>
+							  <div>
+							    <span class="hours"></span>
+							    <div class="smalltext">Hours</div>
+							  </div> -->
+								<div>
+									<span class="minutes f1"></span>
+									<div class="smalltext f1">Minutes</div>
+								</div>
+								<div>
+									<p class="seconds f1"></p>
+									<p class="f1">seconds</p>
+								</div>
+								<button type="button" class="btn bg-white f1 bs f-20 pause">Pause</button>
+							</div>
 						</div>
 						<div class="col-md-8 col-sm-8 m-b-10p m-t-3p">
-							<p class="f1 text-center f-30">Find the Verbs</p>
+							<p class="f1 text-center f-30 question-text">Find the Verbs</p>
 							<!-- questions -->
 							<div class="bs p-30">
-								<div class="bd-brand p-20 bd-4">
-									<p><a href=""><span class="bd-brand p-3">odugbesan</span></a>&nbsp; <span class="bd-brand p-3">Purse</span>&nbsp; <span class="bd-brand p-3">ademola</span>&nbsp; <span class="bd-brand p-3">Purse</span>&nbsp; <span class="bd-brand p-3">Abimbola</span>&nbsp; <span class="bd-brand p-3">Abimbola</span>&nbsp;<span class="bd-brand p-3">odugbesan</span>&nbsp; <span class="bd-brand p-3">Purse</span>&nbsp; <span class="bd-brand p-3">ademola</span>&nbsp; <span class="bd-brand p-3">Purse</span>&nbsp; <span class="bd-brand p-3">Abimbola</span>&nbsp; <span class="bd-brand p-3">Abimbola</span>&nbsp;<span class="bd-brand p-3">jolapademi</span>&nbsp;<span class="bd-brand p-3">Timing</span>&nbsp; <span class="bd-brand p-3">Purse</span>&nbsp; <span class="bd-brand p-3">Score</span>&nbsp; <span class="bd-brand p-3">Purse</span>&nbsp; <span class="bd-brand p-3">Abimbola</span>&nbsp;<span class="bd-brand p-3">odugbesan</span>&nbsp; <span class="bd-brand p-3">Purse</span>&nbsp; <span class="bd-brand p-3">ademola</span>&nbsp; <span class="bd-brand p-3">Purse</span>&nbsp; <span class="bd-brand p-3">Abimbola</span>&nbsp; <span class="bd-brand p-3">Abimbola</span>&nbsp;<span class="bd-brand p-3">odugbesan</span>&nbsp; <span class="bd-brand p-3">Purse</span>&nbsp; <span class="bd-brand p-3">ademola</span>&nbsp; <span class="bd-brand p-3">Purse</span>&nbsp; <span class="bd-brand p-3">Abimbola</span>&nbsp;<span class="bd-brand p-3">Timing</span>&nbsp; <span class="bd-brand p-3">Abimbola</span>&nbsp;<span class="bd-brand p-3">jolapademi</span>&nbsp;<span class="bd-brand p-3">Timing</span>&nbsp; <span class="bd-brand p-3">Purse</span>&nbsp; <span class="bd-brand p-3">Score</span>&nbsp; <span class="bd-brand p-3">Purse</span>&nbsp; <span class="bd-brand p-3">Abimbola</span>&nbsp;</p>
-									<!-- <p><span class="bd-brand p-3">jolapademi</span>&nbsp;<span class="bd-brand p-3">Timing</span>&nbsp; <span class="bd-brand p-3">Purse</span>&nbsp; <span class="bd-brand p-3">Score</span>&nbsp; <span class="bd-brand p-3">Purse</span>&nbsp; <span class="bd-brand p-3">Abimbola</span>&nbsp; </p> -->
+								<div class="bd-brand p-20 bd-4 b4 choice-area">
+									
 								</div>
 								<!-- answer -->
+
 								<div class="bd-brand p-10 bd-4 mpos-rel">
-									<p><span class="bd-brand p-3 p-l-10 p-r-10">odugbesan</span>&nbsp; <span class="bd-brand p-3 p-l-10 p-r-10">odugbesan</span>&nbsp; <span class="bd-brand p-3 p-l-10 p-r-10">odugbesan</span>&nbsp; <span class="bd-brand p-3 p-l-10 p-r-10">odugbesan</span></p>
-									<p><span class="bd-brand p-3 p-l-10 p-r-10">odugbesan</span>&nbsp; <span class="bd-brand p-3 p-l-10 p-r-10">odugbesan</span>&nbsp; <span class="bd-brand p-3 p-l-10 p-r-10">odugbesan</span>&nbsp; <span class="bd-brand p-3 p-l-10 p-r-10">odugbesan</span></p>
+									<div class="row" id="ref"></div>
+
 								</div>
+								<!-- <p><span class="bd-brand p-3 p-l-10 p-r-10">odugbesan</span>&nbsp; <span class="bd-brand p-3 p-l-10 p-r-10">odugbesan</span>&nbsp; <span class="bd-brand p-3 p-l-10 p-r-10">odugbesan</span>&nbsp; <span class="bd-brand p-3 p-l-10 p-r-10">odugbesan</span></p>
+									<p><span class="bd-brand p-3 p-l-10 p-r-10">odugbesan</span>&nbsp; <span class="bd-brand p-3 p-l-10 p-r-10">odugbesan</span>&nbsp; <span class="bd-brand p-3 p-l-10 p-r-10">odugbesan</span>&nbsp; <span class="bd-brand p-3 p-l-10 p-r-10">odugbesan</span></p> -->
+
 							</div>
 						</div>
 						<div class="col-md-2 col-sm-2 mpos-abs mt-50 ml-215">
@@ -106,11 +129,13 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-2"></div>
+				<div class="col-md-2">
+
+				</div>
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- <footer class="nb-footer bg-greyish-brown m-t-70 p-t-10">
 		<div class="container-fluid">
 			<div class="row">
@@ -140,18 +165,185 @@
 			</div>
 		</div>
 	</footer> -->
-	
-	
+	<!-- purse modal -->
+	<div id="welcome" class="modal fade " role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content bg-black">
+				<div class="modal-header no-bd">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Modal Header</h4>
+				</div>
+				<div class="modal-body">
+					<div class="text-center">
+						<a href=""><button type="button" class="btn bg-white f1 bs f-30 bd-20 m-t-10 w-900 width-360">Resume</button></a>
+
+						<a href=""><button type="button" class="btn bg-white f1 bs f-30 bd-20 m-t-10p w-900 width-360">Replay</button></a>
+
+						<a href=""><button type="button" class="btn bg-white f1 bs f-30 bd-20 m-t-10p w-900 width-360">Menu</button></a>
+
+						<a href=""><button type="button" class="btn bg-white f1 bs f-30 bd-20 m-t-10p w-900 width-360">Exit</button></a>
+					</div>
+				</div>
+				<div class="modal-footer no-bd">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- fail modal -->
+	<div id="welcome" class="modal fade " role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content bg-black">
+				<div class="modal-header no-bd">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Modal Header</h4>
+				</div>
+				<div class="modal-body">
+					<div class="text-center">
+						<a href=""><button type="button" class="btn bg-white f1 bs f-30 bd-20 m-t-10 w-900 width-360">Resume</button></a>
+
+						<a href=""><button type="button" class="btn bg-white f1 bs f-30 bd-20 m-t-10p w-900 width-360">Replay</button></a>
+
+						<a href=""><button type="button" class="btn bg-white f1 bs f-30 bd-20 m-t-10p w-900 width-360">Menu</button></a>
+
+						<a href=""><button type="button" class="btn bg-white f1 bs f-30 bd-20 m-t-10p w-900 width-360">Exit</button></a>
+					</div>
+				</div>
+				<div class="modal-footer no-bd">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- fail modal -->
+	<div id="failed" class="modal fade " role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content bg-black">
+				<div class="modal-header no-bd">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Modal Header</h4>
+				</div>
+				<div class="modal-body">
+					<div class="text-center">
+						<div class="col-md-4 bd-4 bs bg-white opacity-90 m-t-3p m-b-5p p-20">
+							<div class="bd-brand bs p-b-5p">
+								<p class="f1 f-40 w-900 text-center p-t-20">Time Out</p>
+								<p class="text-center"><span class=""><i class="fa fa-clock-o fa-5x f-11em c-red" aria-hidden="true"></i></span></p>
+								<p class="f1 text-center f-12 f-20">Score : <span class="">23422</span></p>
+								<div class="row p-t-10p">
+									<div class="col-md-2"></div>
+									<div class="col-md-8">
+										<div class="row">
+											<div class="col-md-5 col-xs-5">
+												<a href=""><button type="button" class="btn bg-white f1 bs f-20 w-900 width-80">Replay</button></a>
+											</div>
+											<div class="col-md-2 col-xs-2"></div>
+											<div class="col-md-5 col-xs-5">
+												<a href=""><button type="button" class="btn bg-white f1 bs f-20 w-900 width-80">Menu</button></a>
+											</div>
+												</div>
+											</div>
+									<div class="col-md-2"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer no-bd">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
 
 
-	
 
+	<audio>
+		<source src="ACCELERATOR_e_breton_HIB267_LC06881_J1.mp3" type="audio/mpeg">
+
+	</audio>
 
 
 	<script type="text/javascript" src="libraries/bootstrap/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="libraries/bootstrap/js/game.js"></script>
 
-    <script src="libraries/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="assets/js/registrationformvalidation.js"></script>
-    <script type="text/javascript" src="assets/js/signup.js"></script>
+	<script src="libraries/bootstrap/js/bootstrap.min.js"></script>
+	
 </body>
+<script type="text/javascript">
+	$(function () {
+
+
+		$('.b4 span').click(function () {
+			var $content = $('#ref');
+			var $this = $(this),
+				character = $this.html();
+			$content.html($content.html() + "<div class='col-md-3'>" + "<span class='bd-brand p-3 p-l-10 p-r-10'>" + character + "</span>" + "</div>");
+			// if(this===previousTarget) {
+			this.style.display = "none";
+			// }
+			// previousTarget=this;
+			// return false;
+
+		});
+
+
+	});
+
+	function getTimeRemaining(endtime) {
+		var t = Date.parse(endtime) - Date.parse(new Date());
+		var seconds = Math.floor((t / 1000) % 60);
+		var minutes = Math.floor((t / 1000 / 60) % 60);
+		// var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+		// var days = Math.floor(t / (1000 * 60 * 60 * 24));
+		return {
+			'total': t,
+			// 'days': days,
+			// 'hours': hours,
+			'minutes': minutes,
+			'seconds': seconds
+		};
+	}
+
+	// function initializeClock(id, endtime) {
+	//    var clock = document.getElementById(id);
+	//   // var daysSpan = clock.querySelector('.days');
+	//   // var hoursSpan = clock.querySelector('.hours');
+	//   var minutesSpan = clock.querySelector('.minutes');
+	//   var secondsSpan = clock.querySelector('.seconds');
+
+	//   function updateClock() {
+	//     var t = getTimeRemaining(endtime);
+
+	//     // daysSpan.innerHTML = t.days;
+	//     // hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+	//     minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+	//     secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+	//     if (t.total <= 0) {
+	//       clearInterval(timeinterval);
+	//       $('#welcome').modal('show');
+	//     }
+	//   }
+
+	//   updateClock();
+	//   var timeinterval = setInterval(updateClock, 1000);
+	// }
+
+	var deadline = new Date(Date.parse(new Date()) + 1 * 1 * 2 * 60 * 1000);
+	// initializeClock('clockdiv', deadline);
+
+</script>
+
 </html>

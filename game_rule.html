@@ -89,7 +89,7 @@
 					<div class="row p-b-5p">
 						<div class="col-md-9 col-xs-7 col-sm-9"></div>
 						<div class="col-md-3">
-							<a href="game.html"><button type="button" class="btn bg-white f1 bs f-20">Play</button></a>
+							<a href="game.html"><button type="button" class="btn bg-white f1 bs f-20 go-btn">Play</button></a>
 						</div>
 					</div>
 				</div>
@@ -131,7 +131,10 @@
 	
 
 
-	
+	<audio autoplay loop>
+	  <source src="ACCELERATOR_e_breton_HIB267_LC06881_J1.mp3" type="audio/mpeg">
+	  
+	</audio>
 
 
 
@@ -141,4 +144,23 @@
     <script type="text/javascript" src="assets/js/registrationformvalidation.js"></script>
     <script type="text/javascript" src="assets/js/signup.js"></script>
 </body>
+<script type="text/javascript">
+	$('.go-btn').hover(function(){
+			var audio = new Audio("./Tick-DeepFrozenApps-397275646.mp3" ) ;
+
+			audio.oncanplaythrough = function(){
+			audio.play();
+			}
+
+			
+
+			// audio.onended = function(){
+			// audio.play();
+			// }
+		});
+		$('.go-btn').mouseleave(function(){
+			var audio = new Audio();
+			audio.pause();
+		});
+</script>
 </html>
