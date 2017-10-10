@@ -1,0 +1,257 @@
+@media( max-width : 585px ) {
+.bg-landing {
+   /* background: linear-gradient(100deg, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.40) 50%),cornflowerblue;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    width: 100%;
+    height: 750px;*/
+    z-index: 1 !important;
+    overflow-x: hidden !important;
+    overflow-y: scroll !important;
+}
+.teache {
+    display: none;
+}
+.well.syllabus:before{
+	display: none;
+}
+.well.topic:before{
+	display: none;
+}
+.smll-txt{
+	font-size: 15px;
+}
+.welcometxt button {
+    padding: 9px 50px;
+    font-family: handwriting !important;
+    border-radius: 50px;
+    font-size: 16px;
+    background: #5385ff;
+    border: #355288;
+    letter-spacing: 0.0em;
+    outline: none;
+    z-index: 1 !important;
+    margin-top: 10%;
+    animation-delay: 2.0s;
+    transition: all .7s ease;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.45);
+}
+.well.wels {
+    width: 100%;
+}
+.select-modal button{
+    margin-top:10px !important;
+    width: 100% !important;
+}
+.leftbar {
+    position: fixed;
+    right: -6%;
+    top: 34%;
+    width: 80px;
+    animation-delay: 2.5s;
+}
+.exptxt{
+	font-family: intor;
+	color: white;
+	text-shadow: 0 1px 2px black;
+	font-size: 20px;
+	animation-delay: .9s;
+}
+.leftbar i{
+	background:  #2295f1;
+	border-radius: 50%;
+	padding: 8px ;
+	box-shadow: 0 2px 15px rgba(0,0,0,0.45);
+	margin-top: 10%;
+	cursor: pointer;
+	transition: all .6s ease;
+}
+.tabe{
+	display: none;
+}
+.minitxt {
+    font-family: minecraft !important;
+    font-size:55px;
+    z-index: 1 !important;
+    color: white;
+    text-shadow: 0 4px 7px black;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 0.2em;
+}
+.mee{
+    position: absolute;
+    top: 104px;
+    left: 60% !important;
+}
+.md{
+    display: none;
+}
+}
+@media( max-width : 989px ) {
+
+	.bg-landing {
+   /* background: linear-gradient(100deg, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.40) 50%),cornflowerblue;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    width: 100%;
+    height: 750px;*/
+    z-index: 1 !important;
+    overflow-x: hidden !important;
+    overflow-y: scroll !important;
+}
+.leftbar {
+    position: fixed;
+    right: -11%;
+    top: 34%;
+    width: 80px;
+    animation-delay: 2.5s;
+}
+.leftbar i{
+	background:  #2295f1;
+	border-radius: 50%;
+	padding: 8px ;
+	box-shadow: 0 2px 15px rgba(0,0,0,0.45);
+	margin-top: 10%;
+	cursor: pointer;
+	transition: all .6s ease;
+}
+.tabe{
+	display: none;
+}
+.minitxt {
+    font-family: minecraft !important;
+    font-size:55px;
+    z-index: 1 !important;
+    color: white;
+    text-shadow: 0 4px 7px black;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 0.2em;
+}
+.well.topic:before{
+	display: none;
+}
+.welcometxt button {
+    padding: 9px 50px;
+    font-family: handwriting !important;
+    border-radius: 50px;
+    font-size: 16px;
+    background: #5385ff;
+    border: #355288;
+    letter-spacing: 0.0em;
+    outline: none;
+    z-index: 1 !important;
+    margin-top: 10%;
+    animation-delay: 2.0s;
+    transition: all .7s ease;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.45);
+}
+.exptxt{
+	font-family: intor;
+	color: white;
+	text-shadow: 0 1px 2px black;
+	font-size: 20px;
+	animation-delay: .9s;
+}
+.well.syllabus:before{
+	display: none;
+}
+.teache {
+    display: none;
+}
+.mee{
+    position: absolute;
+    top: 104px;
+    left: 80%;
+}
+}
+@media( max-width : 220px ){
+	.bg-landing {
+   /* background: linear-gradient(100deg, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.40) 50%),cornflowerblue;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    width: 100%;
+    height: 750px;*/
+    z-index: 1 !important;
+    overflow-x: hidden !important;
+    overflow-y: scroll !important;
+}
+.smll-txt{
+	font-size: 15px;
+}
+.well.syllabus:before{
+	display: none;
+}
+.teache {
+    display: none;
+}
+.tabe{
+	display: none;
+}
+.minitxt {
+    font-family: minecraft !important;
+    font-size:55px;
+    z-index: 1 !important;
+    color: white;
+    text-shadow: 0 4px 7px black;
+    -webkit-font-smoothing: antialiased;
+    letter-spacing: 0.2em;
+}
+.welcometxt button {
+    padding: 9px 50px;
+    font-family: handwriting !important;
+    border-radius: 50px;
+    font-size: 16px;
+    background: #5385ff;
+    border: #355288;
+    letter-spacing: 0.0em;
+    outline: none;
+    z-index: 1 !important;
+    margin-top: 10%;
+    animation-delay: 2.0s;
+    transition: all .7s ease;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.45);
+}
+.leftbar {
+    position: fixed;
+    right: -6%;
+    top: 34%;
+    width: 80px;
+    animation-delay: 2.5s;
+}
+.well.topic:before{
+	display: none;
+}
+.leftbar i{
+	background:  #2295f1;
+	border-radius: 50%;
+	padding: 8px ;
+	box-shadow: 0 2px 15px rgba(0,0,0,0.45);
+	margin-top: 10%;
+	cursor: pointer;
+	transition: all .6s ease;
+}
+.exptxt{
+	font-family: intor;
+	color: white;
+	text-shadow: 0 1px 2px black;
+	font-size: 20px;
+	animation-delay: .9s;
+}
+.smll-txt{
+	font-size: 15px;
+}
+.mee{
+    position: absolute;
+    top: 129px;
+    left: 60% !important;
+}
+}
+
+
+/*@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}*/

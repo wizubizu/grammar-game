@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="author" content="">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>English Mall</title>
+	
+
+	<!-- STYLESHEETS-->
+	<link rel="stylesheet" type="text/css" href="libraries/bootstrap/css/bootstrap.min.css">
+
+	<!-- CUSTOM STYLES -->
+	<!-- CUSTOM STYLES -->
+	<!-- <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/index.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/checkbox.css"> -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+	<link rel="stylesheet" href="assets/css/animate.css">
+	<link rel="stylesheet" href="assets/css/material-icon.css">
+	
+
+
+	<!-- WEBFONT -->
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
+
+	<!-- ICON -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="bg-game">
+	
+
+	
+	<header class="back">
+		<a href="index.html"><i class="material-icons">arrow_back</i></a>
+	</header>
+	<section class="bershow">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8 " id="questionArea">
+					<p class="text-center minitxt question-category">VERBS</p>
+
+					<div class="well">
+						<div class="row">
+							<div class="col-md-2 clocker">
+								<p class="">Time</p>
+								<div id="clockdiv">
+								 <!--  <div>
+								    <span class="days"></span>
+								    <div class="smalltext">Days</div>
+								  </div>
+								  <div>
+								    <span class="hours"></span>
+								    <div class="smalltext">Hours</div>
+								  </div> -->
+									  <div>
+									    <p class=""><b class="minutes f1 smalltext"></b> m :
+									   	<b class="seconds f1"></b> s</p>
+									  </div>
+									  
+								</div>
+								<button type="button" class="btn btn-primary pause"><i class="material-icons">pause</i></button>
+							</div>
+							<div class="col-md-8 b4" style="position: relative;">
+								<h4 class=" text-center question-text">Find the Verbs</h4>
+								<!-- questions -->
+								<div class="bd-brand p-10 bd-4 b4 choice-area">
+									
+								</div>
+								<hr>	
+								<!-- answer -->
+								<h4 class="text-center">Your Answers</h4>
+								<div class="bd-brand p-10 bd-4 mpos-rel" >
+									<div class="row" id="ref"></div>
+									
+								</div>
+									
+							</div>
+							<div class="col-md-2 mee">
+								<p class="" id="namers">Abimbola</p>
+								<p class="f1">Score: <span id="numberscore">0</span></p>
+								<button type="button" class="btn btn-primary" id="hint">Hint</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2">
+					
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="gwelcomegame container-fluid">
+		<div class="row">		
+			<div class="col-md-4 col-md-offset-4">
+				<div class="well names">		
+					<h3 class="text-center ">Enter Your Game Name</h3>
+					<center>
+						<input type="text" placeholder="Your Game Name" class="form-control" id="inputed" maxlength="12">
+					
+					<div class="row">	
+						<div class="col-md-6">	
+							<input type="text" placeholder="Your Age" class="form-control">
+						</div>
+						<div class="col-md-6">	
+							<input type="text" placeholder="Your Class" class="form-control">
+						</div>
+					</div><br>	
+					<button class="btn btn-primary" id="playnow">Play Now</button>
+					</center>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="leftbar animated bounceIn md">
+		<i class="material-icons">add</i>
+		<i class="material-icons">tune</i>
+		<i class="material-icons">info</i>
+		<i class="material-icons">edit</i>
+		<i class="material-icons">settings</i>
+	</div>
+	
+	<!-- purse modal -->
+	<div id="welcome" class="modal fade " role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content bg-black">
+				<div class="modal-header no-bd">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<!-- <h4 class="modal-title">Modal Header</h4> -->
+				</div>
+				<div class="modal-body">
+					<div class="text-center">
+						<a href=""><button type="button" class="btn bg-white f1 bs f-30 bd-20 m-t-10 w-900 width-360 mwidth-100">Resume</button></a>
+
+						<a href=""><button type="button" class="btn bg-white f1 bs f-30 bd-20 m-t-10p w-900 width-360 mwidth-100">Replay</button></a>
+
+						<a href=""><button type="button" class="btn bg-white f1 bs f-30 bd-20 m-t-10p w-900 width-360 mwidth-100">Menu</button></a>
+
+						<a href=""><button type="button" class="btn bg-white f1 bs f-30 bd-20 m-t-10p w-900 width-360 mwidth-100">Exit</button></a>
+					</div>
+				</div>
+				<div class="modal-footer no-bd">
+					<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- pass modal -->
+	<div id="question-pass-modal" class="modal fade " role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div  class="modal-content bg-black">
+				<div class="modal-header no-bd">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<!-- <h4 class="modal-title">Modal Header</h4> -->
+				</div>
+				<div class="modal-body">
+					<div class="bd-4 bs bg-white opacity-90 p-20">
+						<div class="bd-brand bs p-b-5p">
+							<p class="text-center"><span class=""><i class="fa fa-trophy fa-5x f-11em c-green" aria-hidden="true"></i></span></p>
+							<p class="f1 text-center f-12 f-20">Score : <span class="">23422</span></p>
+
+							<div class="row p-t-10p">
+								<div class="col-md-1 col-sm-2"></div>
+								<div class="col-md-10 col-sm-8 text-center">
+									<div class="row">
+										<div class="col-md-4 col-xs-4">
+											<a href=""><button type="button" class="btn bg-white f1 bs f-20 mf-14 w-900 width-80 mwidth-100 replay">Replay</button></a>
+										</div>
+										<div class="col-md-4 col-xs-4">
+											<a href=""><button type="button" class="btn bg-white f1 bs f-20 mf-14 w-900 width-80 mwidth-100 next">Next</button></a>
+										</div>
+										<div class="col-md-4 col-xs-4">
+											<a href=""><button type="button" class="btn bg-white f1 bs f-20 mf-14 w-900 width-80 mwidth-100 menu">Menu</button></a>
+										</div>
+											</div>
+										</div>
+								<div class="col-md-1 col-sm-2"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer no-bd">
+					<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+	<!-- fail modal -->
+	<div id="failed" class="modal fade " role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content bg-black">
+				<div class="modal-header no-bd">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<!-- <h4 class="modal-title">Modal Header</h4> -->
+				</div>
+				<div class="modal-body">
+					<div class="text-center">
+						<div class="bd-4 bs bg-white opacity-90 p-20">
+							<div class="bd-brand bs p-b-5p">
+								<p class="f1 f-40 w-900 text-center p-t-20">Time Out</p>
+								<p class="text-center"><span class=""><i class="fa fa-clock-o fa-5x f-11em c-red" aria-hidden="true"></i></span></p>
+								<p class="f1 text-center f-12 f-20">Score : <span class="">23422</span></p>
+								<div class="row p-t-10p">
+									<div class="col-md-1 col-sm-2"></div>
+									<div class="col-md-10 col-sm-8 text-center">
+										<div class="row">
+											<div class="col-xs-1"></div>
+											<div class="col-md-5 col-xs-4">
+												<a href=""><button type="button" class="btn bg-white f1 bs f-20  w-900 width-80 mwidth-100">Replay</button></a>
+											</div>
+											<div class="col-md-2 col-xs-2"></div>
+											<div class="col-md-5 col-xs-4">
+												<a href=""><button type="button" class="btn bg-white f1 bs f-20 w-900 width-80 mwidth-100">Menu</button></a>
+											</div>
+											<div class="col-xs-1"></div>
+										</div>
+									</div>
+									<div class="col-md-1 col-sm-2"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer no-bd">
+					<!-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button> -->
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+	<div id="welcome" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content gameover">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button>
+	      </div>
+	      <div class="modal-body">
+	        <p class="minitxt text-center">Game Over</p>
+	        <p class="text-center">Score:0</p>
+	      </div>
+	     
+	    </div>
+
+	  </div>
+	</div>
+
+
+	<audio autoplay loop>
+	  <source src="ACCELERATOR_e_breton_HIB267_LC06881_J1.mp3" type="audio/mpeg">
+	  
+	</audio>
+	
+	<audio >
+	  <source src="ACCELERATOR_e_breton_HIB267_LC06881_J1.mp3" type="audio/mpeg">
+	  
+	</audio>
+
+
+	<script type="text/javascript" src="libraries/bootstrap/js/jquery-3.1.1.min.js"></script>
+	<script type="text/javascript" src="libraries/bootstrap/js/game.js"></script>
+
+    <script src="libraries/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="assets/js/registrationformvalidation.js"></script>
+    <script type="text/javascript" src="assets/js/signup.js"></script>
+</body>
+	<script type="text/javascript">
+// 		$(function(){
+		
+			
+// 			$('.b4 p').click(function(){
+// 				var $counter = $('#numberscore');
+// 				$counter.html($counter.val() + 1 );
+// 				var $content = $('#ref');
+// 				var $this = $(this),
+// 				character = $this.html();
+// 				$content.html( $content.html() + "<div class='col-md-3'>" + "<p class='text-center ans'>" + character + "</p>" + "</div>");
+// 				// if(this===previousTarget) {
+// 			        this.style.display = "none";
+
+// 			    // }
+// 			    // previousTarget=this;
+// 			    // return false;
+// 			 //    if($('.ans').click) {
+// 				//     this.style.display = "none";
+// 				//     $content.html().style.display = "none";
+// 				// } else {
+// 				//     //run function2
+// 				// }
+
+// 			});
+
+			
+// 		});
+		
+// 		$('#playnow').click(function(){
+// 		function getTimeRemaining(endtime) {
+//   var t = Date.parse(endtime) - Date.parse(new Date());
+//   var seconds = Math.floor((t / 1000) % 60);
+//   var minutes = Math.floor((t / 1000 / 60) % 60);
+//   // var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+//   // var days = Math.floor(t / (1000 * 60 * 60 * 24));
+//   return {
+//     'total': t,
+//     // 'days': days,
+//     // 'hours': hours,
+//     'minutes': minutes,
+//     'seconds': seconds
+//   };
+// }
+
+function initializeClock(id, endtime) {
+   var clock = document.getElementById(id);
+  // var daysSpan = clock.querySelector('.days');
+  // var hoursSpan = clock.querySelector('.hours');
+  var minutesSpan = clock.querySelector('.minutes');
+  var secondsSpan = clock.querySelector('.seconds');
+
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+
+    // daysSpan.innerHTML = t.days;
+    // hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+    minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+    if (t.total <= 0) {
+      clearInterval(timeinterval);
+      $('#welcome').modal('show');
+    }
+  }
+
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
+
+	var deadline = new Date(Date.parse(new Date()) + 1 * 1 * 2 * 60 * 1000);
+	initializeClock('clockdiv', deadline);
+});
+				
+	</script>
+	<script>	
+		$('#submit').click(function(){
+			var divs= document.getElementById('ref');
+		// for (var i = 0, len = divs.length; i < len; ++i) {
+
+		    if (divs.textContent == 'Paul' || 'Love' ){
+		    alert('corret');
+		}
+		// }
+		});
+		$('#hint').click(function(){
+			$('.b4 p').toggleClass('uder');
+			$('#hint').toggleClass('uder');
+		});
+		$('#playnow').click(function(){
+			var worker = $('#inputed').val();
+			var out = document.getElementById('namers');
+			out.textContent = worker;
+			$(".bershow").css('display',"block");
+			$('.gwelcomegame').css('display','none');
+		});
+	</script>
+	<script>	
+		$('.b4 p' ).hover(function(){
+			var audio = new Audio("./Tick-DeepFrozenApps-397275646.mp3" ) ;
+
+			audio.oncanplaythrough = function(){
+			audio.play();
+			}
+
+			
+
+			// audio.onended = function(){
+			// audio.play();
+			// }
+		});
+		$('.b4 p').mouseleave(function(){
+			var audio = new Audio();
+			audio.pause();
+		});
+		
+	</script>
+</html>
