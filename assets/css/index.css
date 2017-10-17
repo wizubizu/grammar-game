@@ -91,8 +91,13 @@
 /*mall game*/
 @font-face{
 	font-family: 'handwriting(2)';
-	src: url('../../handwriting/handwriting(2).ttf');
+	src: url('../../handwriting/game_font_7.ttf');
 }
+@font-face{
+	font-family: 'minecraft';
+	src: url('../../handwriting/Minecraft Evenings.otf');
+}
+
 @font-face{
 	font-family: 'Handwriting';
 	src: url('../../handwriting/Handwriting.ttf');
@@ -105,7 +110,7 @@
 	font-family: "handwriting(2)";
 }
 .f2{
-	font-family: "Handwriting";
+	font-family: "SketchHandwriting";
 }
 .f3{
 	font-family: "SketchHandwriting";
@@ -1351,3 +1356,5 @@ input[type="date"]:hover ~ .calendar_index{
 	0%{opacity: 0.5;}
 	100%{opacity: 1;}
 }*/
+
+

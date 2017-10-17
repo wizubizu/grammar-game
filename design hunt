@@ -1,0 +1,666 @@
+// Copyright (c) 2016 by Design Hunt. All rights reserved.
+//
+//
+
+// // creates a new tab when clicked
+// chrome.browserAction.onClicked.addListener(function(activeTab) {
+//   if (activeTab.url !== "chrome://newtab/") {
+//     chrome.tabs.create({});
+//   }
+// });
+
+(function($) {
+  'use strict';
+ 
+  var DesignHunt = function(el) {
+	  
+	var url = window.location.href;
+    var captured = /search=([^&]+)/.exec(url); // Value is in [1] ('384' in our case)
+    var result = captured ? captured : '';
+    this.searchTerm = result[1];
+
+    this.el = $(el); // container element
+    this.feedURL = 'http://talkaboutdesign.com/api/v1.1/';
+    this.favURL = 'http://talkaboutdesign.com/api/v1.1/?favorites=true'; // API url // API url
+    this.logOutURL = 'http://talkaboutdesign.com/api/v1.1/?logout=true';
+    //this.feedURL = 'js/feed.json';
+    this.resizeTimer = null;
+    this.currentFeed = null;
+    this.user = null;
+
+  }
+  
+   function saveChanges(data) {
+      // Save it using the Chrome extension storage API.
+      localStorage.setItem('header', data);
+      retrieveChanges();
+   }
+  
+  function retrieveChanges() {
+      var storage = localStorage;
+      var app = 'header';
+      var hidden = storage.getItem(app);
+      changeHeaderDisplay(hidden);
+      
+  }
+
+  function changeHeaderDisplay(hidden) {
+     
+      if (hidden == "true") {
+
+          $('.menu').addClass('menu-hidden');
+          $('.container').addClass('container-collapsed');
+      } else {
+
+      }
+
+  }
+  
+  DesignHunt.prototype = {
+
+    init: function() {
+      
+      var feedType = "featured";
+      
+      if (this.searchTerm !== undefined) {
+	      
+	      var decodedSearchString = decodeURIComponent(this.searchTerm.replace(/\+/g, " "));
+	      
+	      
+	      console.log(decodedSearchString);
+	      
+	      $('#search-input').val(decodedSearchString);
+	      
+	      this.getFeed(this.feedURL+'?search='+this.searchTerm, feedType);
+      } else {
+	       this.getFeed(this.feedURL, feedType);
+      }
+     
+      this.eventListeners();
+      this.menuClickHandler();
+      
+      retrieveChanges();
+
+    },
+
+    getFeed: function(feed, type) {
+      var self = this;   
+               
+      $.getJSON(feed, function(data) {
+        // pass JSON feed off to render
+        var user = data["user"];
+        self.user = user;
+        self.displayMenu(user, type);
+        self.renderFeed(data["posts"]);
+        
+      });
+
+    },
+
+    renderFeed: function(results) {
+      var self = this;
+      
+      $(self.el).empty();    
+      
+        
+      if (results == null && this.searchTerm != null) {
+	         var placeholder = $('<div class="fav-intro"><h1>Search Beta</h1><p>Hang on. Our search is still in early beta. It will get better over time.</p></p></div>');
+	         $('.container').addClass('fav-container');
+	         $('.container').append(placeholder);
+       } else if (results == null) {
+	       	console.log("THIS");
+       		 var placeholder = $('<div class="fav-intro"><h1>Start your personal collection</h1><p>Your favorite content will be kept here for later viewing, synced between your devices.</p></div>');
+	         $('.container').addClass('fav-container');
+	         $('.container').append(placeholder);
+
+       } else {
+	       $('.container').removeClass('fav-container');
+	       $('.fav-intro').empty();
+	       
+       }
+      
+    
+      // loop through results
+      for (var i in results) {
+                
+        var obj = results[i],
+        id = obj.objectId,
+        img = obj.image_url,
+        width = obj.imageWidth,
+        height = obj.imageHeight,
+        colors = obj.colors,
+        short_url = obj.short_url,
+        title = obj.title,
+        url = obj.source_url;
+        
+        
+        if (height == undefined) {
+	        height = '600';
+        }
+          
+        if (id === "ad") {		    
+                var ad = $(
+                '<li class="ad" data-img-url="' + img + '"  data-ad>' +
+                  '<a class="image_link" target="_blank" href="' + url + '?utm_source=Design%20Hunt" data-title="' + title + '" data-share-link="http://www.talkaboutdesign.com/static/object.php?id=' + id + '" data-fav-link="http://talkaboutdesign.com/api/v1.1/favorite.php?id=' + id + '">' +
+                    '<img class="lazy" data-original="' + img + '" width="' + width + '" height="' + height + '" alt="' + title + '">' +
+                  '</a>' +
+                '</li>'
+              );
+
+              // append result to el
+              $(self.el).append(ad);
+          
+          } else {
+            
+              if (!(img == undefined || url == undefined)) {
+
+                // build markup
+                
+                // Need to change this and remove a links.
+                
+                
+                
+                var html = $(
+                '<li data-img-url="' + img + '" data-list-item>' +
+                  '<a class="image_link" target="_blank" data-source-link="' + short_url + '" data-title="' + title + '" data-share-link="'+ url + '" data-fav-link="http://talkaboutdesign.com/api/v1.1/favorite.php?id=' + id + '" data-colors="'+ colors +'">' +
+                    '<img class="lazy" data-original="' + img + '" width="' + width + '" height="' + height + '" alt="' + title + '">' +
+                  '</a>' +
+                '</li>'
+                );
+
+                // append result to el
+                $(self.el).append(html);
+
+              }
+            
+          }
+      }
+
+      // build collage
+      self.buildCollage();
+      
+      $("img.lazy").lazyload({
+	  		effect : "fadeIn",
+	  		placeholder : "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkqAcAAIUAgUW0RjgAAAAASUVORK5CYII="
+      });
+      
+
+      // item click handler
+      self.itemClickHandler();
+
+    },
+    
+    // Render top menu 
+    
+    displayMenu: function(user, type) {
+      
+      var self = this;
+      
+       
+      
+       var obj = user,
+       id = obj.id, 
+       name = obj.display_name, 
+       twitter_avatar = obj.twitter_avatar;
+       
+        // open twitter sign in
+       var twitter_url = 'http://talkaboutdesign.com/twitter/process.php?redirect_url=http://talkaboutdesign.com/preview/';
+       
+       $('.menu').empty();
+              
+               if (id === "undefined") {
+              
+	              var profile = $('<div class="profile_logo"><a href="/"><img src="../img/logo.png"/></a></div>');
+	              var options = $('<div class="main-menu"><ul><li><a class="featured">Featured</a></li></ul></div>');
+	             
+	              var logout = $('<div class="signup_button"><a href="'+twitter_url+'">Sign In</a></div>');
+              } else {
+	              
+	               var profile = $('<div class="profile"><img src="'+twitter_avatar+'"/></div>');
+	              var options = $('<div class="main-menu"><ul><li><a class="featured">Featured</a></li><li><a class="fav">My Collection</a></li></ul></div>');
+	             
+	              var logout = $('<div class="logout"><a>Sign Out</a></div>');
+              }
+             
+              // append result to el
+              $('.menu').append(profile);
+              $('.menu').append(options);
+              $('.menu').append(logout);
+             // $('.dh-logo').css("background-image", "url("+twitter_avatar+")"); 
+             
+             if (type === "featured") {
+                 $('.featured').addClass('active');
+             } else {
+                 $('.fav').addClass('active');
+             }
+              
+             $('.fav').on('click', function(ev) {
+	            _gaq.push(['_trackEvent', 'Menu', 'click', 'My Collection']);
+               var feed = "fav";
+               self.currentFeed = "fav";
+               self.getFeed(self.favURL, feed);
+             });
+             
+              $('.featured').on('click', function(ev) {
+	             _gaq.push(['_trackEvent', 'Menu', 'click', 'Featured']);
+                var feed = "featured";
+                self.currentFeed = "featured";
+               self.getFeed(self.feedURL, feed);
+             });
+             
+             $('.logout').on('click', function(ev) { 
+	             
+	              _gaq.push(['_trackEvent', 'Menu', 'click', 'Sign Out']);
+	          
+                var feed = "featured";                
+                self.getFeed(self.logOutURL, feed);
+                
+             });
+         
+       //}
+       
+    }, 
+
+    buildCollage: function() {
+
+      var self = this;
+
+      // uses CollagePlus gallery plugin
+      $(self.el).css('opacity', 1);
+
+      $(self.el).removeWhitespace().collagePlus({
+        'targetHeight': 300,
+        'fadeSpeed': 'fast',
+        'allowPartialLastRow': false
+      });
+
+    },
+
+    eventListeners: function() {
+
+      var self = this;
+
+      // hide images until they are resized
+      $(window).bind('resize', function() {
+
+        // set el opacity to 0
+       // $(self.el).css('opacity', 0);
+
+        // check if timer exists
+        if (self.resizeTimer) {
+          clearTimeout(self.resizeTimer);
+        }
+
+        // set timer to re-run building of collage
+        self.resizeTimer = setTimeout(function() {
+          self.buildCollage();
+        }, 100);
+
+      });
+      
+      
+/*
+      window.onkeydown = function (event) {
+		    if (event.keyCode === 32) {
+		        event.preventDefault();
+		        var feed = self.feedType || 'featured';
+		         // track image view
+				 _gaq.push(['_trackEvent', 'feed', 'refresh']);
+		        self.getFeed(self.feedURL, feed);
+		        $("html, body").animate({ scrollTop: 0 }, "slow");
+		    }
+		};
+*/
+      
+/*
+      $(window).keyup(function(e) {
+	      
+	     console.log(e.keyCode);
+
+        // ESC key closing
+        if (e.keyCode === 32) {
+	         
+	         self.getFeed(self.feedURL, self.feedType);
+	         e.preventDefault();
+
+        }
+
+      });
+*/
+      
+      
+      
+    },
+
+    itemClickHandler: function() {
+
+      var self = this;
+      
+      $(self.el).unbind();
+
+      $(self.el).on('click', '[data-list-item]', function(ev) {
+
+        // track image view
+        _gaq.push(['_trackEvent', 'Image', 'view']);
+
+        // get url from item
+        var url = $(this).find('a').attr('data-source-link');
+
+        // get url from item
+        var shareUrl = $(this).find('a').attr('data-share-link');
+        
+        var favUrl = $(this).find('a').attr('data-fav-link');
+        var colors = $(this).find('a').attr('data-colors');
+
+        // get image source from item
+        var img = $(this).find('img').attr('src');
+
+        // get title from item
+        var title = $(this).find('a').attr('data-title');
+        
+        // console.log(colors);
+
+
+        // pass url and img to modal
+        self.buildModal(url, shareUrl ,img, title, favUrl, colors);
+        
+               
+
+        // prevent click through of anchor
+        ev.preventDefault();
+
+      });
+
+    },
+
+    buildModal: function(url, shareUrl, img, title, favUrl, colors) {
+	    
+
+      var self = this;
+      
+      var colorArray = colors.split(",");
+	//  console.log(colorArray.length);
+	  
+	  var processedColors = [];
+	  
+	        
+      for (var color in colorArray) {
+	      var strip = colorArray[color].replace('#', '');	      
+	      processedColors.push(strip);
+	      
+      }
+      
+      // console.log(processedColors);
+
+      // define modal
+      this.modal = $('#modal');
+      this.carbon = $('.carbon');
+      
+       var obj = self.user,
+       id = obj.id;
+       
+       //window.location.href = shareUrl;
+
+       
+      
+      // define modal content
+      this.modalContent = $(
+        '<div class="modal__window">' +
+          '<div class="modal__content">' +
+            '<a href="' + url + '" target="_blank">' +
+              '<img class="modal__image" src="' + img + '">' +
+            '</a>' +
+          '</div>' +
+        '</div>' +
+        '<ul class="modal__share">' +
+          '<li class="modal__share-item">' +
+            '<a class="modal__share-link modal__share-link--facebook" href="https://www.facebook.com/dialog/share?app_id=1073697905986026&display=page&href=' + shareUrl + '&t=' + title + ' via @DesignHuntApp" target="_blank" data-share-item="Facebook">' +
+              '<svg class="modal__share-svg modal__share-svg--facebook">' +
+                '<use xlink:href="#facebook-icon"></use>' +
+              '</svg>' +
+            '</a>' +
+          '</li>' +
+          '<li class="modal__share-item">' +
+            '<a class="modal__share-link modal__share-link--twitter" href="http://twitter.com/share?url=' + shareUrl + '&text=' + title + ' via @DesignHuntApp" target="_blank" data-share-item="Twitter">' +
+              '<svg class="modal__share-svg modal__share-svg--twitter">' +
+                '<use xlink:href="#twitter-icon"></use>' +
+              '</svg>' +
+            '</a>' +
+          '</li>' +
+          '<li class="modal__share-item">' +
+            '<a class="modal__share-link modal__share-link--pinterest" href="https://www.pinterest.com/pin/create/link/?media=' + img + '&description=' + title + ' shared via https://chrome.google.com/webstore/detail/design-hunt/ilfjbjodkleebapojmdfeegaccmcjmkd?ref=pinterest &url='+ shareUrl +'" target="_blank" data-share-item="Pinterest">' +
+              '<svg class="modal__share-svg modal__share-svg--pinterest">' +
+                '<use xlink:href="#pinterest-icon"></use>' +
+              '</svg>' +
+            '</a>' +
+          '</li>' +
+          '<li class="modal__share-item">' +
+            '<a class="modal__share-link modal__share-link--link" href="' + url + '" target="_blank">' +
+              '<svg class="modal__share-svg modal__share-svg--link">' +
+                '<use xlink:href="#link-icon"></use>' +
+              '</svg>' +
+            '</a>' +
+          '</li>' +
+        '</ul>'
+      );
+
+      // define overlay
+      this.overlay = $('#modal-overlay');
+
+      // append modal content to modal
+      this.modalContent.appendTo(this.modal);
+      
+      var removeOption = '&remove=false';
+      
+      if (self.currentFeed === "fav") {
+	      removeOption = '&remove=true';
+      }
+      
+       if (id === "undefined") {
+	       $('.modal__content').append(
+            '<ul class="modal_colors">' +
+        '<li><div style="background: #'+ processedColors[0] + '"></div></li>' +
+        '<li><div style="background: #'+ processedColors[1] + '"></div></li>' +
+        '<li><div style="background: #'+ processedColors[2] + '"></div></li>' +
+        '<li><div style="background: #'+ processedColors[3] + '"></div></li>' +
+        '</ul>'
+	       );
+       } else {
+	       $('.modal__content').append(
+		      '<a class="modal__share-link modal__share-link--star" href="' + favUrl + removeOption + '" target="_blank" data-share-item="Favorite">' +
+              '<svg class="modal__share-svg modal__share-svg--star">' +
+                '<use xlink:href="#star-icon"></use>' +
+              '</svg>' +
+            '</a>' +
+            '<ul class="modal_colors">' +
+        '<li><div style="background: #'+ processedColors[0] + '"></div></li>' +
+        '<li><div style="background: #'+ processedColors[1] + '"></div></li>' +
+        '<li><div style="background: #'+ processedColors[2] + '"></div></li>' +
+        '<li><div style="background: #'+ processedColors[3] + '"></div></li>' +
+        '</ul>'
+	       );
+       }
+
+
+      // set aria hidden to true for non-modal elements
+      $('body > *').not(this.modal).attr('aria-hidden', true);
+
+      // set aria attributes for modal
+      self.modal.attr({
+          'role': 'dialog',
+          'aria-hidden': false,
+          'aria-modal': true
+        });
+
+      // add delay for transitions
+      setTimeout(function() {
+
+        $('body').addClass('modal-engaged');
+        self.carbon.addClass('carbon-visible');
+
+        self.modal.addClass('modal--active');
+
+        self.overlay.addClass('modal-overlay--active');
+
+      }, 10);
+
+      // bind key pressing
+      $(document).bind('keyup', this.keyPressing());
+
+      // off click handler
+      self.offClickHandler();
+
+      // enable closing of modal
+      self.modal.find('.modal__close').on('click', function() {
+
+        self.destroyModal();
+
+      });
+
+      // click handler for social share links
+      self.shareClickHandler();
+
+    },
+
+    shareClickHandler: function() {
+
+      var self = this;
+
+      self.modal.find('[data-share-item]').on('click', function(ev) {
+
+        // get social platform value
+        var shareTo = $(this).attr('data-share-item');
+
+        // push event to GA
+        _gaq.push(['_trackEvent', 'Image', 'Share', shareTo]);
+
+        // get href value
+        var href = $(this).attr('href');
+        
+        if (shareTo === "Favorite") {
+	       
+	      $.getJSON(href, function(data) {
+
+	        
+	      }).error(function() { 
+		      
+		       
+		        if (self.currentFeed === "fav") {
+					 var feed = "fav";
+					 self.getFeed(self.favURL, feed);
+				}
+      
+/*
+		        
+		       var feed = "fav";
+               self.getFeed(self.favURL, feed);
+*/
+	      });
+	      
+	       self.destroyModal();
+
+        } else {
+	        // open new popup window with href value
+			window.open(href,"share","width=800,height=600");
+        }
+
+
+        // prevent click through of anchor
+        ev.preventDefault();
+
+      });
+
+    },
+    
+    menuClickHandler: function() {
+      var self = this;
+     $('.dh-logo').on('click', function(ev) {     
+              $('.menu').toggleClass('menu-hidden');
+              $('.container').toggleClass('container-collapsed');
+              
+            if ( $('.menu').is('.menu-hidden') ) {
+              saveChanges(true);
+            } else {
+              saveChanges(false);
+            }
+                 
+        // prevent click through of anchor
+        ev.preventDefault();
+
+      });
+      
+    },
+
+    destroyModal: function() {
+
+      var self = this;
+      
+      // remove modal engaged class from body
+      $('body').removeClass('modal-engaged');
+      
+      self.carbon.removeClass('carbon-visible');
+
+      self.modal.removeClass('modal--active');
+
+      self.overlay.removeClass('modal-overlay--active');
+
+      setTimeout(function() {
+
+        // remove modal content
+        self.modalContent.remove();
+       // $('#modal').empty();
+
+      }, 300);
+
+      // set aria hidden to false
+      $('body > *').not(this.modal).attr('aria-hidden', false);
+
+      // unbind key pressing
+      $(document).unbind('keyup', this.keyPressing());
+
+    },
+
+    keyPressing: function() {
+
+      var self = this;
+
+      $(document).keyup(function(e) {
+
+        // ESC key closing
+        if (e.keyCode == 27) {
+
+          self.destroyModal();
+
+        }
+
+      });
+
+    },
+    
+   
+    offClickHandler: function() {
+
+      var self = this;
+
+      $(document).on('click touchstart', function(ev) {
+
+        if((self.modal.has(ev.target).length === 0) && ($('body').hasClass('modal-engaged'))) {
+          self.destroyModal();
+        }
+
+      });
+
+    }
+
+  };
+
+  // wait until document is ready
+  $(document).ready(function() {
+
+    // initialize app
+    var DesignHuntApp = new DesignHunt('#am-container');
+    DesignHuntApp.init();
+
+  });
+
+}(jQuery));

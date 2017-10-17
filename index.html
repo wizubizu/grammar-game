@@ -14,10 +14,13 @@
 	<link rel="stylesheet" type="text/css" href="libraries/bootstrap/css/bootstrap.min.css">
 
 	<!-- CUSTOM STYLES -->
-	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+	<!-- <link rel="stylesheet" type="text/css" href="assets/css/main.css">
 	<link rel="stylesheet" type="text/css" href="assets/css/index.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/checkbox.css">
-	
+	<link rel="stylesheet" type="text/css" href="assets/css/checkbox.css"> -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/responsive.css">
+	<link rel="stylesheet" href="assets/css/animate.css">
+	<link rel="stylesheet" href="assets/css/material-icon.css">
 
 
 	<!-- WEBFONT -->
@@ -27,89 +30,62 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body class="bg-landing">
-	
-
-	<header>
-		<nav class="navbar navbar-default bs bg-white" role="navigation">
-			<div class="container-fluid">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.html">Englis Mall</a>
-				</div>
-		
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse navbar-ex1-collapse">
-					<!-- <ul class="nav navbar-nav">
-						<li class="active"><a href="#">Link</a></li>
-						<li><a href="#">Link</a></li>
-					</ul>
-					<form class="navbar-form navbar-left" role="search">
-						<div class="form-group">
-							<input type="text" class="form-control" placeholder="Search">
-						</div>
-						<button type="submit" class="btn btn-default">Submit</button>
-					</form> -->
-					<ul class="nav navbar-nav navbar-right">
-						<li class="f2 f-20 w-900"><a href="#">Login</a></li>
-						<!-- <li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Action</a></li>
-								<li><a href="#">Another action</a></li>
-								<li><a href="#">Something else here</a></li>
-								<li><a href="#">Separated link</a></li>
-							</ul>
-						</li> -->
-					</ul>
-				</div><!-- /.navbar-collapse -->
-			</div>
-		</nav>
-	</header>
-	
-	<section>
-		<div class="container">
-			<div class="row">
-				<div class="col-md-4"></div>
-				<div class="col-md-4">
-					<div class="bs p-t-5p p-b-3p bd-4 bg-white">
-						<p class="f1 text-center f-20">Welcome to Grammar game</p>
-					</div>
-				</div>
-				<div class="col-md-4"></div>
-			</div>
-
-			<div class="row m-t-10p">
-				<div class="col-md-2"></div>
-				<div class="col-md-8">
-					<div class="row">
-						<div class="col-md-4 col-xs-4 mm-t-90">
-							<img src="assets/img/teacher_juanita.png" class="width-250 mwidth-104">
-						</div>
-						<div class="col-md-8 col-xs-8 m-t-10p">
-							<div class="bs bd-4 bg-white p-10">
-								<p class="f1 text-justify f-20">Grammar  game is you knowing about English</p>
-								<br><br><br><br><br><br>
-								<div class="row p-b-5p">
-									<div class="col-md-9 col-xs-7 col-sm-9"></div>
-									<div class="col-md-3">
-										<a href="select_game.html"><button type="button" class="btn bg-white f1 bs f-20 go-btn" >Start</button></a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-2"></div>
-			</div>
+	<div class="welcomeload">	
+		<div class="container">	
+		<h1 class="text-center minitxt animated bounceInDown">English Mall</h1>
+		<h3 class="text-center">(The Grammer Game)</h3>
+		<center>
+		<div class="well wels">	
+			<h4 class="text-left">Terms And Condition</h4>
+			<p class="text-left">	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim aliquid, placeat fuga laborum repudiandae doloremque nobis commodi eos, voluptatibus esse cupiditate alias saepe. Perferendis numquam accusamus aspernatur alias explicabo! Veritatis quasi saepe, dignissimos aspernatur placeat tenetur mollitia quae eos, pariatur sint, sunt doloremque voluptatibus, aperiam optio natus non esse odit praesentium ipsa consequatur. Corporis deserunt iste facilis exercitationem sint velit, veritatis dolor error quis ratione eum distinctio rem enim minima sit soluta architecto praesentium, quasi doloremque! Commodi adipisci minima consectetur officia optio provident asperiores voluptates, nam praesentium sed nostrum maxime.</p>
+			<input type="checkbox"> &nbsp;I agreee To The Terms And Condition Applied To this Game
 		</div>
-	</section>
+			<button class="btn btn-primary" id="clicker">Get Started</button>
+		</center>
+	</div>
+	</div>
+	<div class="main-page">
 	
+		<header>
+			
+		</header>
+		
+		<section>
+			<div class="container">
+				<canvas class="background"></canvas>
+				<div class="welcometxt">
+					<h1 class="text-center minitxt animated bounceInDown">English Mall</h1>
+					<h3 class="text-center exptxt animated fadeInDown">(The Grammer Game)</h3>
+					<img src="assets/img/teacher_juanita.png" alt="" class="img-responsive teache">
+					<img src="assets/img/tabe.png" alt="" class="img-responsive tabe animated fadeInUp">
+					<div class="row">
+						<div class="col-md-3 ">
+							<a href="select_syllabus.html"><button class="btn btn-warning animated bounceIn">Play</button></a>
+						</div>
+						<div class="col-md-3 ">
+							<button class="btn btn-warning animated bounceIn">Load Game</button>
+						</div>
+						<div class="col-md-3 ">
+							<button class="btn btn-warning animated bounceIn">Leadrboard</button>
+						</div>
+						<div class="col-md-3">
+							<button class="btn btn-warning animated bounceIn">Help</button>
+						</div>
+					</div>
+				</div>
+				<div class="leftbar animated bounceIn">
+					<i class="material-icons">add</i>
+					<i class="material-icons">tune</i>
+					<i class="material-icons">info</i>
+					<i class="material-icons">edit</i>
+					<i class="material-icons">settings</i>
+				</div>
+			</div>
+		</section>
+		<div class="bgpage">
+			
+		</div>
+	</div>
 	<!-- <footer class="nb-footer bg-greyish-brown m-t-70 p-t-10">
 		<div class="container-fluid">
 			<div class="row">
@@ -155,13 +131,13 @@
 
 
 	<script type="text/javascript" src="libraries/bootstrap/js/jquery-3.1.1.min.js"></script>
-
+	<script src="assets/js/particles.js"></script>
     <script src="libraries/bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="assets/js/registrationformvalidation.js"></script>
     <script type="text/javascript" src="assets/js/signup.js"></script>
 </body>
 	<script type="text/javascript">
-		$('.go-btn').hover(function(){
+		$('.welcometxt button' ).hover(function(){
 			var audio = new Audio("./Tick-DeepFrozenApps-397275646.mp3" ) ;
 
 			audio.oncanplaythrough = function(){
@@ -174,9 +150,46 @@
 			// audio.play();
 			// }
 		});
-		$('.go-btn').mouseleave(function(){
+		$('.welcometxt button').mouseleave(function(){
+			var audio = new Audio();
+			audio.pause();
+		});
+		$('.leftbar i' ).hover(function(){
+			var audio = new Audio("./Tick-DeepFrozenApps-397275646.mp3" ) ;
+
+			audio.oncanplaythrough = function(){
+			audio.play();
+			}
+
+			
+
+			// audio.onended = function(){
+			// audio.play();
+			// }
+		});
+		$('.leftbar i').mouseleave(function(){
 			var audio = new Audio();
 			audio.pause();
 		});
 	</script>
+	<script type="text/javascript">
+	window.onload = function() {
+	  Particles.init({
+	    selector: '.background',
+	    maxParticles: 60,
+	    sizeVariations: 3,
+	    speed: 0.6,
+	    color: '#ffffff',
+	    minDistance:60,
+	    connectParticles:true
+	  });
+	};
+	
+</script>
+<script>	
+	$('#clicker').click(function(){
+		$(".main-page").addClass("openpage");
+		$('.welcomeload').css('display',"none")
+	});
+</script>
 </html>
