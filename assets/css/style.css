@@ -172,7 +172,7 @@ p.text-center.ans:before {
     letter-spacing: 0.1em;
     outline: none;
     z-index: 1 !important;
-    margin-top: 127%;
+    margin-top: 93%;
     animation-delay: 2.0s;
     transition: all .7s ease;
     box-shadow: 0 2px 15px rgba(0,0,0,0.45);
